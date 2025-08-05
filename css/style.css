@@ -1,0 +1,31 @@
+body { font-family: 'Inter', sans-serif; }
+.font-mono { font-family: 'Fira Code', monospace; }
+.font-black { font-weight: 900; }
+
+/* --- Dynamic UI Additions --- */
+.page-transition { transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; }
+.page-hidden { opacity: 0; transform: translateY(20px); pointer-events: none; }
+
+.active-nav { color: #4f46e5 !important; }
+.dark .active-nav { color: #00ff00 !important; }
+
+@keyframes float { 
+    0% { transform: translateY(0px); } 
+    50% { transform: translateY(-10px); } 
+    100% { transform: translateY(0px); } 
+}
+.float-1 { animation: float 6s ease-in-out infinite; }
+.float-2 { animation: float 8s ease-in-out infinite 1s; }
+.float-3 { animation: float 7s ease-in-out infinite 0.5s; }
+
+/* --- Original & Refined Styles --- */
+.gradient-text { background: -webkit-linear-gradient(45deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.dark .gradient-text { background: -webkit-linear-gradient(45deg, #a5b4fc, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.svg-illustration .svg-bg { fill: #e0e7ff; }
+.svg-illustration .svg-primary { fill: #4f46e5; }
+.dark .svg-illustration .svg-bg { fill: #312e81; }
+.dark .svg-illustration .svg-primary { fill: #818cf8; }
+.glowing-image-wrapper { box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.5); }
+.dark .glowing-image-wrapper { box-shadow: 0 0 60px -15px rgba(165, 180, 252, 0.4); }
+.tab-btn.active { background-color: #4f46e5; color: #ffffff; }
+.dark .tab-btn.active { background-color: #00ff00; color: #000000; }
