@@ -1,23 +1,145 @@
-document.addEventListener('DOMContentLoaded', function() {
+// ==========================================================================
+// PORTFOLIO SCRIPT - CYBER NOVA THEME
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Project Data
     const projectsData = [
-        { id: 1, title: 'Sistem Pakar Certainty Factor', shortDescription: 'Aplikasi web untuk mendiagnosis kerusakan komputer menggunakan metode CF.', longDescription: 'Sistem Pakar ini adalah aplikasi web canggih yang dibangun menggunakan framework Laravel. Tujuannya adalah untuk membantu pengguna non-teknis mendiagnosis masalah pada komputer mereka. Aplikasi ini menggunakan algoritma Certainty Factor (CF) untuk menghitung tingkat keyakinan dari setiap kemungkinan kerusakan berdasarkan gejala yang dipilih pengguna, memberikan hasil yang akurat dan mudah dipahami.', imageSrc: 'assets/img/proyek1.png', detailImageSrc: 'assets/img/proyek1.png', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'Tailwind CSS'], liveDemoUrl: '#', githubUrl: '#'},
-        { id: 2, title: 'AutoChat-Discord', shortDescription: 'Solusi otomatisasi untuk mengirim pesan ke saluran Discord secara terjadwal.', longDescription: 'AutoChat adalah solusi otomatisasi untuk mengirim pesan ke saluran Discord secara terjadwal. Pengguna dapat menentukan saluran tujuan, isi pesan, dan interval penundaan pengiriman pesan. Program ini berjalan 24/7, memungkinkan pengiriman pesan otomatis tanpa intervensi manual, sehingga memudahkan promosi atau komunikasi di Discord secara efisien.', imageSrc: 'assets/img/proyek2.png', detailImageSrc: 'assets/img/proyek2.png', tech: ['Python', 'Discord.py', 'Asyncio'], liveDemoUrl: '#', githubUrl: '#'},
-        { id: 3, title: 'Buku Catatan Online', shortDescription: 'Website yang memungkinkan pengguna untuk membuat, menyimpan, dan mengelola catatan.', longDescription: 'Ini adalah aplikasi CRUD (Create, Read, Update, Delete) klasik yang dibangun untuk melatih fundamental pengembangan web. Pengguna dapat mendaftar, login, dan mengelola catatan pribadi mereka. Proyek ini menekankan pada arsitektur kode yang bersih dan fungsionalitas yang solid.', imageSrc: 'assets/img/proyek3.png', detailImageSrc: 'assets/img/proyek3.png', tech: ['CodeIgniter', 'PHP', 'Bootstrap'], liveDemoUrl: '#', githubUrl: '#'},
+        {
+            id: 1,
+            title: 'Sistem Pakar Diagnosa Penyakit Domba Berbasis Certainty Factor',
+            shortDescription: 'Aplikasi web cerdas untuk membantu peternak mendiagnosis penyakit pada domba secara dini menggunakan metode sistem pakar Certainty Factor.',
+            longDescription: 'Proyek ini merupakan implementasi sistem pakar yang dirancang khusus untuk sektor peternakan. Menggunakan metode Certainty Factor (CF), aplikasi ini mampu menganalisis gejala-gejala yang dimasukkan oleh pengguna untuk menghitung tingkat keyakinan terhadap kemungkinan berbagai penyakit pada domba. Tujuannya adalah menyedikan alat bantu diagnosis yang akurat, cepat, dan mudah diakses bagi para peternak, sehingga memungkinkan penanganan dini dan pencegahan penyebaran penyakit yang lebih luas. Sistem ini dibangun dengan antarmuka yang intuitif agar dapat digunakan oleh siapa saja tanpa memerlukan latar belakang teknis yang mendalam',
+            imageSrc: 'assets/img/sistem-pakar.jpg',
+            tech: ['CodeIgniter 4', 'PHP', 'MySQL', 'Laragon'],
+            liveDemoUrl: '#',
+            githubUrl: 'https://github.com/NashirLidienillah/sistem-pakar-domba'
+        },
+        {
+            id: 2,
+            title: 'UI/UX - ReDesign Web DISKOMINFOSATIK Kab Serang',
+            shortDescription: 'Sebuah studi kasus desain ulang antarmuka (UI) dan pengalaman pengguna (UX) untuk website resmi DISKOMINFOSATIK, dengan fokus pada modernisasi tampilan, peningkatan aksesibilitas, dan penyederhanaan navigasi bagi masyarakat',
+            longDescription: 'Proyek ini merupakan inisiatif desain ulang komprehensif untuk website DISKOMINFOSATIK Kabupaten Serang. Proses dimulai dari analisis mendalam terhadap situs web yang ada untuk mengidentifikasi kelemahan dalam struktur informasi, alur pengguna, dan desain visual. Tahap selanjutnya meliputi riset pengguna untuk memahami kebutuhan masyarakat dalam mengakses informasi publik. Berdasarkan temuan tersebut, saya mengembangkan wireframe dan prototype interaktif untuk membangun alur navigasi yang lebih intuitif. Fokus utama desain visual adalah menciptakan antarmuka yang bersih, modern, dan responsif, sejalan dengan identitas instansi pemerintah yang transparan dan mudah diakses. Hasil akhirnya adalah sebuah desain yang tidak hanya menarik secara visual, tetapi juga fungsional dan ramah pengguna.',
+            imageSrc: 'assets/img/diskominfosatik.png',
+            tech: ['Figma'],
+            liveDemoUrl: 'https://www.figma.com/proto/dvFEmqD3QEz82LMLzKlheV/DISKOMINFOSATIK?page-id=0%3A1&node-id=1-2&p=f&viewport=81%2C340%2C0.19&t=a4qSbqk2KtzyyAJm-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=287%3A1363',
+            githubUrl: '#'
+        },
+        {
+            id: 3,
+            title: 'UI/UX - ReDesign Web Inspektorat kab serang',
+            shortDescription: 'Sebuah inisiatif desain ulang UI/UX website Inspektorat Kab. Serang untuk meningkatkan transparansi, kepercayaan publik, serta menyediakan alur pengaduan yang lebih jelas dan aman.',
+            longDescription: 'Proyek ini berfokus pada perombakan total website Inspektorat untuk menyajikan informasi yang lebih terstruktur dan mudah diakses. Prioritas utama adalah menyederhanakan arsitektur informasi dan merancang ulang fitur Saluran Pengaduan agar lebih intuitif dan aman. Tampilan visualnya dirancang agar terlihat profesional dan berintegritas, guna membangun kepercayaan masyarakat terhadap lembaga.',
+            imageSrc: 'assets/img/inspektorat.png',
+            tech: ['Figma'],
+            liveDemoUrl: 'https://www.figma.com/proto/YYbVrPrEPmS1h4dbIRHaYb/Inspektorat-serangkab?page-id=0%3A1&node-id=1-2&viewport=719%2C288%2C0.21&t=ctyk2UbzVFiqJ1Xk-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A14',
+            githubUrl: '#'
+        },
     ];
-    
-    AOS.init({ duration: 800, once: true, offset: 50 });
+
+    const certificatesData = [
+        { id: 1, title: "Dasar Pemrograman Web", issuer: "Dicoding Indonesia", date: "Juni 2024", imageUrl: "assets/img/sertifikat-placeholder.png", credentialUrl: "#" },
+        { id: 2, title: "Belajar JavaScript Lanjutan", issuer: "Progate", date: "Mei 2024", imageUrl: "assets/img/sertifikat-placeholder.png", credentialUrl: "#" },
+        { id: 3, title: "Cloud Practitioner Essentials", issuer: "AWS Skill Builder", date: "April 2024", imageUrl: "assets/img/sertifikat-placeholder.png", credentialUrl: "#" },
+    ];
+
+    // Initialize all features
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50,
+        easing: 'ease-out-cubic'
+    });
+
+    initScrollProgress();
     initThemeSwitcher();
+    initMobileMenu();
     initPageTransitions(projectsData);
     initTabs();
     generateProjectCards(projectsData);
+    generateCertificateCards(certificatesData);
     initCounterUpOnScroll();
     initNavScrollSpy();
-    initNavClickHandling();
+    initSmoothScroll();
     initConstellation();
+    initTypingAnimation();
+    initHeaderScroll();
 });
 
+// ==========================================================================
+// SCROLL PROGRESS INDICATOR
+// ==========================================================================
+function initScrollProgress() {
+    const progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
+
+    const updateProgress = () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+        progressBar.style.width = `${progress}%`;
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+}
+
+// ==========================================================================
+// HEADER SCROLL EFFECT
+// ==========================================================================
+function initHeaderScroll() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    let lastScroll = 0;
+    const scrollThreshold = 100;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+
+        if (currentScroll > scrollThreshold) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        lastScroll = currentScroll;
+    }, { passive: true });
+}
+
+// ==========================================================================
+// MOBILE MENU
+// ==========================================================================
+function initMobileMenu() {
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (!menuToggle || !mainNav) return;
+
+    menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking nav links
+    const navLinks = mainNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        });
+    });
+}
+
+// ==========================================================================
+// THEME SWITCHER
+// ==========================================================================
 function initThemeSwitcher() {
-    // ... (Fungsi ini tidak berubah)
     const themeToggleBtn = document.getElementById('theme-toggle');
     const lightIcon = document.getElementById('theme-toggle-light-icon');
     const darkIcon = document.getElementById('theme-toggle-dark-icon');
@@ -46,279 +168,493 @@ function initThemeSwitcher() {
     });
 }
 
+// ==========================================================================
+// TYPING ANIMATION
+// ==========================================================================
+function initTypingAnimation() {
+    const typingElement = document.getElementById('typing-text');
+    const cursor = document.querySelector('.typing-cursor');
+    if (!typingElement) return;
+
+    const texts = [
+        'Software Engineer',
+        'Web Developer',
+        'UI/UX Designer',
+        'Problem Solver'
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function type() {
+        const currentText = texts[textIndex];
+
+        if (isDeleting) {
+            typingElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            typingElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex === currentText.length) {
+            isDeleting = true;
+            typingSpeed = 2000; // Pause at end
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typingSpeed = 500; // Pause before next word
+        }
+
+        setTimeout(type, typingSpeed);
+    }
+
+    // Start typing animation
+    setTimeout(type, 1000);
+
+    // Cursor blink effect
+    if (cursor) {
+        setInterval(() => {
+            cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+        }, 500);
+    }
+}
+
+// ==========================================================================
+// PAGE TRANSITIONS & MODALS
+// ==========================================================================
 function initPageTransitions(projectsData) {
-    // ... (Fungsi ini tidak berubah)
     const detailWrapper = document.getElementById('project-detail');
     const backBtn = document.getElementById('back-to-main');
-    
+
     function showDetailPage(projectId) {
         const project = projectsData.find(p => p.id === projectId);
         if (!project) return;
-        
+
         document.getElementById('detail-title').innerText = project.title;
         document.getElementById('detail-description').innerText = project.longDescription;
         document.getElementById('detail-image').src = project.detailImageSrc || project.imageSrc;
         document.getElementById('detail-demo-link').href = project.liveDemoUrl;
         document.getElementById('detail-github-link').href = project.githubUrl;
         document.getElementById('detail-tech').innerHTML = project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
-        
+
         detailWrapper.classList.remove('page-hidden');
-    };
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    }
+
+    function hideDetailPage() {
+        detailWrapper.classList.add('page-hidden');
+        document.body.style.overflow = ''; // Restore scroll
+    }
 
     document.addEventListener('click', (e) => {
         if (e.target.closest('[data-project-id]')) {
-             showDetailPage(parseInt(e.target.closest('[data-project-id]').dataset.projectId));
+            showDetailPage(parseInt(e.target.closest('[data-project-id]').dataset.projectId));
         }
     });
 
-    backBtn.addEventListener('click', () => detailWrapper.classList.add('page-hidden'));
+    backBtn.addEventListener('click', hideDetailPage);
+
+    // Close modal on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !detailWrapper.classList.contains('page-hidden')) {
+            hideDetailPage();
+        }
+    });
 }
 
+// ==========================================================================
+// TAB SYSTEM
+// ==========================================================================
 function initTabs() {
-    // ... (Fungsi ini tidak berubah)
     const tabContainer = document.querySelector('.tab-container');
     if (!tabContainer) return;
-    
+
     const tabButtons = tabContainer.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
-    
+
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
+            // Remove active class from all buttons
             tabButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
             button.classList.add('active');
+
+            // Get tab id and show corresponding content
             const tabId = button.dataset.tab;
             tabContents.forEach(content => {
-                content.id === `tab-content-${tabId}` ? content.classList.remove('hidden') : content.classList.add('hidden');
+                if (content.id === `tab-content-${tabId}`) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
             });
         });
     });
-    if(tabButtons.length > 0) tabButtons[0].classList.add('active');
 }
 
+// ==========================================================================
+// GENERATE PROJECT CARDS
+// ==========================================================================
 function generateProjectCards(projectsData) {
-    // ... (Fungsi ini tidak berubah)
-    const projectsGrid = document.getElementById('projects-grid');
-    if (!projectsGrid) return;
-    projectsGrid.innerHTML = projectsData.map(project => `
-        <div class="glass-card" data-aos="fade-up" data-project-id="${project.id}">
-            <div class="overflow-hidden h-48 rounded-t-2xl"><img src="${project.imageSrc}" alt="${project.title}" class="w-full h-full object-cover"></div>
+    const container = document.getElementById('tab-content-projects');
+    if (!container) return;
+
+    const scrollWrapper = document.createElement('div');
+    scrollWrapper.className = 'projects-container';
+
+    const grid = document.createElement('div');
+    grid.className = 'projects-grid';
+
+    grid.innerHTML = projectsData.map(project => `
+        <div class="project-card glass-card" data-aos="fade-up" data-project-id="${project.id}">
+            <div class="overflow-hidden h-52 rounded-t-2xl">
+                <img src="${project.imageSrc}" alt="${project.title}" class="w-full h-full object-cover">
+            </div>
             <div class="p-6 flex flex-col flex-grow">
-                <h3 class="text-xl font-bold mb-2">${project.title}</h3>
-                <p class="text-sm mb-4 flex-grow">${project.shortDescription}</p>
-                <div class="flex justify-between items-center mt-auto pt-4 border-t" style="border-color: var(--glass-border)">
-                    <button class="details-btn font-bold">Details →</button>
-                    <a href="${project.liveDemoUrl}" target="_blank" class="font-semibold text-sm">Live Demo</a>
+                <h3 class="text-xl font-bold mb-3" style="color: var(--text-primary)">${project.title}</h3>
+                <p class="text-sm mb-4 flex-grow" style="color: var(--text-secondary)">${project.shortDescription}</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    ${project.tech.slice(0, 3).map(t => `<span class="tech-tag">${t}</span>`).join('')}
+                </div>
+                <div class="flex justify-between items-center mt-auto pt-4" style="border-top: 1px solid var(--glass-border)">
+                    <button class="font-bold" style="color: var(--accent-primary); transition: all 0.2s;">
+                        Details →
+                    </button>
+                    <a href="${project.liveDemoUrl}" target="_blank" class="font-semibold text-sm hover:text-accent-primary" style="color: var(--text-secondary)">
+                        Live Demo
+                    </a>
                 </div>
             </div>
         </div>
     `).join('');
+
+    scrollWrapper.appendChild(grid);
+    container.innerHTML = '';
+    container.appendChild(scrollWrapper);
 }
 
+// ==========================================================================
+// GENERATE CERTIFICATE CARDS
+// ==========================================================================
+function generateCertificateCards(certificatesData) {
+    const certificatesContainer = document.getElementById('tab-content-certificates');
+    if (!certificatesContainer || certificatesData.length === 0) return;
+
+    const grid = document.createElement('div');
+    grid.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-8';
+
+    grid.innerHTML = certificatesData.map(cert => `
+        <a href="${cert.credentialUrl}" target="_blank" class="glass-card block" data-aos="fade-up">
+            <div class="overflow-hidden h-48 rounded-t-2xl">
+                <img src="${cert.imageUrl}" alt="Sertifikat ${cert.title}" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+                <h3 class="font-bold" style="color: var(--text-primary)">${cert.title}</h3>
+                <p class="text-sm mt-1" style="color: var(--text-secondary)">Diterbitkan oleh: <strong>${cert.issuer}</strong></p>
+                <p class="text-xs mt-2 opacity-75" style="color: var(--text-muted)">${cert.date}</p>
+            </div>
+        </a>
+    `).join('');
+
+    certificatesContainer.innerHTML = '';
+    certificatesContainer.appendChild(grid);
+}
+
+// ==========================================================================
+// COUNTER ANIMATION ON SCROLL
+// ==========================================================================
 function initCounterUpOnScroll() {
-    // ... (Fungsi ini tidak berubah)
-    const counters = document.querySelectorAll('[data-count]');
-    if (counters.length === 0) return;
-    const observer = new IntersectionObserver(entries => {
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    let hasAnimated = false;
+
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const target = parseInt(counter.dataset.count);
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.floor(current) + '+';
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target + '+';
+                }
+            };
+
+            updateCounter();
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = +counter.dataset.count;
-                let current = 0;
-                const increment = target / 100;
-                const updateCounter = () => {
-                    current += increment;
-                    if (current < target) {
-                        counter.innerText = `${Math.ceil(current)}+`;
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.innerText = `${target}+`;
-                    }
-                };
-                updateCounter();
-                observer.unobserve(counter);
+            if (entry.isIntersecting && !hasAnimated) {
+                hasAnimated = true;
+                animateCounters();
             }
         });
-    }, { threshold: 0.8 });
-    counters.forEach(c => observer.observe(c));
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('#stats-section');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
 }
 
+// ==========================================================================
+// NAVIGATION SCROLL SPY
+// ==========================================================================
 function initNavScrollSpy() {
-    // ... (Fungsi ini tidak berubah)
     const sections = document.querySelectorAll('.page-section');
     const navLinks = document.querySelectorAll('.nav-link');
-    const observer = new IntersectionObserver(entries => {
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                navLinks.forEach(link => link.classList.remove('active-nav'));
-                if (activeLink) activeLink.classList.add('active-nav');
+                const sectionId = entry.target.id;
+                navLinks.forEach(link => {
+                    link.classList.remove('active-nav');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active-nav');
+                    }
+                });
             }
         });
-    }, { rootMargin: '-40% 0px -59% 0px' });
+    }, observerOptions);
+
     sections.forEach(section => observer.observe(section));
 }
 
-function initNavClickHandling() {
-    // ... (Fungsi ini tidak berubah)
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.forEach(nav => nav.classList.remove('active-nav'));
-            this.classList.add('active-nav');
+// ==========================================================================
+// SMOOTH SCROLL
+// ==========================================================================
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 }
 
+// ==========================================================================
+// CONSTELLATION CANVAS ANIMATION
+// ==========================================================================
 function initConstellation() {
     const canvas = document.getElementById('constellation-canvas');
     if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
     const homeSection = document.getElementById('home');
     let particlesArray = [];
-    let grid = [];
-    
-    const cellSize = 120; // Ukuran "kandang" virtual untuk partikel
-    let columns, rows;
 
     function resizeCanvas() {
         canvas.width = homeSection.offsetWidth;
         canvas.height = homeSection.offsetHeight;
-        columns = Math.ceil(canvas.width / cellSize);
-        rows = Math.ceil(canvas.height / cellSize);
     }
     resizeCanvas();
 
     const getColors = () => ({
-        particleColor: getComputedStyle(document.documentElement).getPropertyValue('--accent-glow').trim(),
+        particleColor: getComputedStyle(document.documentElement).getPropertyValue('--accent-primary').trim()
     });
     let { particleColor } = getColors();
-    
+
     const mouse = { x: null, y: null, radius: 150 };
-    canvas.addEventListener('mousemove', e => { mouse.x = e.offsetX; mouse.y = e.offsetY; });
-    canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+
+    canvas.addEventListener('mousemove', (e) => {
+        mouse.x = e.offsetX;
+        mouse.y = e.offsetY;
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
 
     class Particle {
         constructor(x, y, dX, dY, s, c) {
-            this.x = x; this.y = y; this.baseX = x; this.baseY = y;
-            this.speedX = dX; this.speedY = dY;
-            this.currentSpeedX = dX; this.currentSpeedY = dY;
-            this.size = s; this.color = c;
-            this.friction = 0.97;
-            this.pushForce = 10;
-            this.returnForce = 0.01;
+            this.x = x;
+            this.y = y;
+            this.directionX = dX;
+            this.directionY = dY;
+            this.size = s;
+            this.color = c;
+            this.baseSize = s;
+            this.pulseAngle = Math.random() * Math.PI * 2;
+            this.velocityX = 0;
+            this.velocityY = 0;
         }
-        draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color; ctx.fill(); }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = this.color;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+
         update() {
-            // Interaksi mouse
-            if (mouse.x !== null) {
-                let dx = this.x - mouse.x;
-                let dy = this.y - mouse.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
+            // Bounce off edges
+            if (this.x + this.size > canvas.width || this.x - this.size < 0) {
+                this.directionX = -this.directionX;
+            }
+            if (this.y + this.size > canvas.height || this.y - this.size < 0) {
+                this.directionY = -this.directionY;
+            }
+
+            // Mouse interaction - smooth push effect
+            if (mouse.x !== null && mouse.y !== null) {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
                 if (distance < mouse.radius) {
                     const force = (mouse.radius - distance) / mouse.radius;
-                    this.currentSpeedX += (dx / distance) * force * this.pushForce;
-                    this.currentSpeedY += (dy / distance) * force * this.pushForce;
+                    this.velocityX -= (dx / distance) * force * 2;
+                    this.velocityY -= (dy / distance) * force * 2;
                 }
             }
-            
-            // Kembali ke posisi awal (memberi efek 'mengambang')
-            this.currentSpeedX += (this.baseX - this.x) * this.returnForce;
-            this.currentSpeedY += (this.baseY - this.y) * this.returnForce;
-            
-            // Friksi
-            this.currentSpeedX *= this.friction;
-            this.currentSpeedY *= this.friction;
 
-            // Batasan Tepi
-            if (this.x + this.size > canvas.width || this.x - this.size < 0) this.currentSpeedX *= -1;
-            if (this.y + this.size > canvas.height || this.y - this.size < 0) this.currentSpeedY *= -1;
-            
-            this.x += this.currentSpeedX;
-            this.y += this.currentSpeedY;
+            // Friction
+            this.velocityX *= 0.95;
+            this.velocityY *= 0.95;
+
+            // Random drift
+            this.directionX += (Math.random() - 0.5) * 0.02;
+            this.directionY += (Math.random() - 0.5) * 0.02;
+
+            // Limit speed
+            const maxSpeed = 0.5;
+            if (Math.abs(this.directionX) > maxSpeed) {
+                this.directionX = Math.sign(this.directionX) * maxSpeed;
+            }
+            if (Math.abs(this.directionY) > maxSpeed) {
+                this.directionY = Math.sign(this.directionY) * maxSpeed;
+            }
+
+            // Pulse effect
+            this.pulseAngle += 0.03;
+            this.size = this.baseSize + Math.sin(this.pulseAngle) * 0.5;
+
+            // Update position
+            this.x += this.directionX + this.velocityX;
+            this.y += this.directionY + this.velocityY;
+
             this.draw();
         }
     }
-    
+
     function init() {
         particlesArray = [];
-        let num = (canvas.width * canvas.height) / 20000;
-        for (let i = 0; i < num; i++) {
-            let size = (Math.random() * 2) + 1;
-            let x = Math.random() * (canvas.width - size * 2) + size * 2;
-            let y = Math.random() * (canvas.height - size * 2) + size * 2;
-            let dX = (Math.random() * 0.4) - 0.2;
-            let dY = (Math.random() * 0.4) - 0.2;
+        const numberOfParticles = (canvas.width * canvas.height) / 9000;
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            const size = (Math.random() * 2) + 1;
+            const x = Math.random() * (canvas.width - size * 2) + size;
+            const y = Math.random() * (canvas.height - size * 2) + size;
+            const dX = (Math.random() * 0.6) - 0.3;
+            const dY = (Math.random() * 0.6) - 0.3;
             particlesArray.push(new Particle(x, y, dX, dY, size, particleColor));
         }
     }
 
-    const connectDistance = 120;
-
-    function updateGrid() {
-        grid = Array(rows * columns).fill(null).map(() => []);
-        for (const particle of particlesArray) {
-            let gridX = Math.floor(particle.x / cellSize);
-            let gridY = Math.floor(particle.y / cellSize);
-            if (gridX >= 0 && gridX < columns && gridY >= 0 && gridY < rows) {
-                let index = gridY * columns + gridX;
-                grid[index].push(particle);
-            }
-        }
+    function getConnectDistance() {
+        return (canvas.width / 7) * (canvas.height / 7);
     }
 
     function connect() {
-        ctx.strokeStyle = `rgba(${hexToRgb(particleColor)}, 0.1)`;
-        ctx.lineWidth = 1;
-        for (let y = 0; y < rows; y++) {
-            for (let x = 0; x < columns; x++) {
-                let index = y * columns + x;
-                for (const particle of grid[index]) {
-                    // Cek sel sekitar
-                    for (let dy = -1; dy <= 1; dy++) {
-                        for (let dx = -1; dx <= 1; dx++) {
-                            let neighborX = x + dx;
-                            let neighborY = y + dy;
-                            if (neighborX >= 0 && neighborX < columns && neighborY >= 0 && neighborY < rows) {
-                                let neighborIndex = neighborY * columns + neighborX;
-                                for (const neighbor of grid[neighborIndex]) {
-                                    let dist = Math.sqrt((particle.x - neighbor.x) ** 2 + (particle.y - neighbor.y) ** 2);
-                                    if (dist < connectDistance) {
-                                        ctx.beginPath();
-                                        ctx.moveTo(particle.x, particle.y);
-                                        ctx.lineTo(neighbor.x, neighbor.y);
-                                        ctx.stroke();
-                                    }
-                                }
-                            }
-                        }
-                    }
+        const connectDistanceSquared = getConnectDistance();
+
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a + 1; b < particlesArray.length; b++) {
+                const dx = particlesArray[a].x - particlesArray[b].x;
+                const dy = particlesArray[a].y - particlesArray[b].y;
+                const distance = dx * dx + dy * dy;
+
+                if (distance < connectDistanceSquared) {
+                    const opacity = 1 - (distance / connectDistanceSquared);
+                    ctx.strokeStyle = `rgba(${hexToRgb(particleColor)}, ${opacity * 0.4})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                    ctx.stroke();
                 }
             }
         }
     }
-    
+
     function animate() {
         requestAnimationFrame(animate);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        updateGrid();
-        for (let i = 0; i < particlesArray.length; i++) particlesArray[i].update();
+
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+        }
+
         connect();
     }
-    
-    window.addEventListener('resize', () => { resizeCanvas(); init(); });
-    window.addEventListener('themeChanged', () => {
-        setTimeout(() => { ({ particleColor } = getColors()); init(); }, 100);
+
+    // Event listeners
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        init();
     });
-    
+
+    window.addEventListener('themeChanged', () => {
+        setTimeout(() => {
+            ({ particleColor } = getColors());
+            init();
+        }, 100);
+    });
+
     function hexToRgb(hex) {
-        if(hex == null) return '255,255,255';
+        if (!hex) return '0, 255, 151';
+
+        hex = hex.trim();
         let r = 0, g = 0, b = 0;
-        if (hex.length == 4) { r = "0x" + hex[1] + hex[1]; g = "0x" + hex[2] + hex[2]; b = "0x" + hex[3] + hex[3]; }
-        else if (hex.length == 7) { r = "0x" + hex[1] + hex[2]; g = "0x" + hex[3] + hex[4]; b = "0x" + hex[5] + hex[6]; }
-        return `${+r},${+g},${+b}`;
+
+        if (hex.length === 4) {
+            r = parseInt(hex[1] + hex[1], 16);
+            g = parseInt(hex[2] + hex[2], 16);
+            b = parseInt(hex[3] + hex[3], 16);
+        } else if (hex.length === 7) {
+            r = parseInt(hex.substring(1, 3), 16);
+            g = parseInt(hex.substring(3, 5), 16);
+            b = parseInt(hex.substring(5, 7), 16);
+        }
+
+        return `${r}, ${g}, ${b}`;
     }
-    
+
     init();
     animate();
 }

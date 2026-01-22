@@ -1,152 +1,902 @@
 /* ==========================================================================
-   TEMA BARU: CYBERNAUT
+   PORTFOLIO THEME: CYBER NOVA - ULTRA MODERN DESIGN
    ========================================================================== */
 
-/* -- 1. Variabel & Pengaturan Dasar -- */
+/* -- 1. CSS Variables & Color System -- */
 :root {
-    --bg-dark: #0a0a14;
-    --glass-bg: rgba(15, 18, 41, 0.5);
-    --glass-border: rgba(129, 140, 248, 0.15);
+    /* Dark Theme Colors */
+    --bg-primary: #050510;
+    --bg-secondary: #0a0a14;
+    --bg-tertiary: #0f0f1e;
+
+    /* Glass Effects */
+    --glass-bg: rgba(15, 18, 41, 0.4);
+    --glass-bg-hover: rgba(20, 25, 50, 0.6);
+    --glass-border: rgba(129, 140, 248, 0.12);
+    --glass-border-hover: rgba(129, 140, 248, 0.3);
+
+    /* Text Colors */
     --text-primary: #e2e8f0;
     --text-secondary: #94a3b8;
-    --accent-glow: #00ff97;
+    --text-muted: #64748b;
+
+    /* Accent Colors */
+    --accent-primary: #00ff97;
     --accent-blue: #5865f2;
-    --shadow-color: rgba(0, 255, 151, 0.4);
-    --shadow-hover-color: rgba(0, 255, 151, 0.7);
+    --accent-purple: #a855f7;
+    --accent-cyan: #06b6d4;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #00ff97 0%, #06b6d4 100%);
+    --gradient-secondary: linear-gradient(135deg, #5865f2 0%, #a855f7 100%);
+    --gradient-accent: linear-gradient(135deg, #00ff97 0%, #5865f2 50%, #a855f7 100%);
+
+    /* Shadows & Glows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+    --glow-primary: 0 0 20px rgba(0, 255, 151, 0.4);
+    --glow-blue: 0 0 20px rgba(88, 101, 242, 0.4);
+    --glow-purple: 0 0 20px rgba(168, 85, 247, 0.4);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
 }
 
 html.light {
-    --bg-dark: #f0f2f5;
-    --glass-bg: rgba(255, 255, 255, 0.6);
-    --glass-border: rgba(55, 65, 81, 0.1);
-    --text-primary: #1f2937;
-    --text-secondary: #4b5565;
-    --accent-glow: #008a52;
-    --accent-blue: #4a58d4;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --shadow-hover-color: rgba(0, 0, 0, 0.15);
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-tertiary: #e2e8f0;
+
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-bg-hover: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(100, 116, 139, 0.1);
+    --glass-border-hover: rgba(100, 116, 139, 0.25);
+
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+
+    --accent-primary: #059669;
+    --accent-blue: #4338ca;
+    --accent-purple: #9333ea;
+    --accent-cyan: #0891b2;
+
+    --gradient-primary: linear-gradient(135deg, #059669 0%, #0891b2 100%);
+    --gradient-secondary: linear-gradient(135deg, #4338ca 0%, #9333ea 100%);
+    --gradient-accent: linear-gradient(135deg, #059669 0%, #4338ca 50%, #9333ea 100%);
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --glow-primary: 0 0 20px rgba(5, 150, 105, 0.3);
+    --glow-blue: 0 0 20px rgba(67, 56, 202, 0.3);
+    --glow-purple: 0 0 20px rgba(147, 51, 234, 0.3);
 }
 
-body { 
-    font-family: 'Inter', sans-serif; 
-    background-color: var(--bg-dark);
+/* -- 2. Base Styles & Typography -- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg-primary);
     color: var(--text-secondary);
     overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-.font-mono { font-family: 'Fira Code', monospace; }
-.font-black { font-weight: 900; }
 
-/* -- 2. Latar Belakang Aurora -- */
+.font-mono {
+    font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+.font-black {
+    font-weight: 900;
+}
+
+/* -- 3. Aurora Background Effects -- */
 .aurora-bg {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: 0; overflow: hidden; pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
 }
+
 .aurora-dot {
-    position: absolute; border-radius: 50%; filter: blur(120px);
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    will-change: transform, opacity;
+    animation-timing-function: ease-in-out;
 }
+
 .aurora-dot-1 {
-    width: 400px; height: 400px; background-color: var(--accent-glow);
-    top: 10%; left: 20%; animation: move-aurora-1 25s infinite alternate ease-in-out;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
+    top: 10%;
+    left: 15%;
+    animation: move-aurora-1 30s infinite alternate;
 }
+
 .aurora-dot-2 {
-    width: 500px; height: 500px; background-color: var(--accent-blue);
-    bottom: 5%; right: 15%; animation: move-aurora-2 30s infinite alternate ease-in-out;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+    bottom: 5%;
+    right: 10%;
+    animation: move-aurora-2 35s infinite alternate;
 }
-@keyframes move-aurora-1 { from { transform: translate(-20%, -10%) rotate(0deg); opacity: 0.2; } to { transform: translate(20%, 10%) rotate(360deg); opacity: 0.4; } }
-@keyframes move-aurora-2 { from { transform: translate(15%, 5%) rotate(0deg); opacity: 0.4; } to { transform: translate(-15%, -5%) rotate(360deg); opacity: 0.2; } }
 
-/* -- 3. Layout & Komponen Kaca -- */
-#content-wrapper { position: relative; z-index: 2; }
-.glass-card, .glass-section {
-    background-color: var(--glass-bg);
+@keyframes move-aurora-1 {
+    0% {
+        transform: translate(-20%, -10%) rotate(0deg);
+        opacity: 0.25;
+    }
+
+    50% {
+        transform: translate(10%, 5%) rotate(180deg);
+        opacity: 0.35;
+    }
+
+    100% {
+        transform: translate(20%, 10%) rotate(360deg);
+        opacity: 0.3;
+    }
+}
+
+@keyframes move-aurora-2 {
+    0% {
+        transform: translate(15%, 5%) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate(-5%, -10%) rotate(180deg);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translate(-15%, -5%) rotate(360deg);
+        opacity: 0.25;
+    }
+}
+
+/* -- 4. Layout & Container -- */
+#content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
+
+/* -- 5. Glass Morphism Components -- */
+.glass-card,
+.glass-section {
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-radius: 1.5rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.1);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
 }
-.glass-section { padding: 4rem 2rem; }
-@media (min-width: 768px) { .glass-section { padding: 6rem 4rem; } }
 
+.glass-card::before,
+.glass-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--accent-primary) 50%,
+            transparent 100%);
+    opacity: 0.3;
+}
+
+.glass-card:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), var(--glow-primary);
+}
+
+.glass-section {
+    padding: 4rem 0;
+    margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+    .glass-section {
+        padding: 6rem 0;
+    }
+}
+
+/* -- 6. Header & Navigation -- */
 header {
-    background-color: rgba(10, 10, 20, 0.5) !important;
-    backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important;
-    border-color: var(--glass-border) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    background: rgba(5, 5, 16, 0.6) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border-bottom: 1px solid var(--glass-border);
+    transition: all var(--transition-base);
 }
-html.light header { background-color: rgba(240, 242, 245, 0.5) !important; }
 
-/* -- 4. Tipografi & Teks -- */
-.hero-title, .section-title { font-family: 'Inter', sans-serif; font-weight: 900; color: var(--text-primary); }
-.hero-title { font-size: 3rem; line-height: 1.1; text-shadow: 0 0 15px var(--shadow-color); }
-.hero-subtitle { font-family: 'Fira Code', monospace; color: var(--accent-glow); font-size: 1.5rem; }
-.hero-description { margin-top: 1.5rem; max-width: 36rem; }
-.section-title { font-size: 2.25rem; }
-.section-subtitle { font-family: 'Fira Code', monospace; margin-top: 1rem; }
-.gradient-text { background: linear-gradient(90deg, var(--accent-glow), var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.contact-email {
-    font-family: 'Fira Code', monospace; font-size: 1.5rem; color: var(--accent-glow);
-    text-shadow: 0 0 10px var(--shadow-color); transition: all 0.3s ease;
+html.light header {
+    background: rgba(248, 250, 252, 0.7) !important;
 }
-.contact-email:hover { letter-spacing: 2px; text-shadow: 0 0 20px var(--shadow-hover-color); }
-.stat-number { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.25rem; color: var(--text-primary); }
-.stat-label { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--text-secondary); }
 
-/* -- 5. Navigasi & Ikon -- */
-header a { color: var(--text-secondary); }
-header .nav-link { font-weight: 500; letter-spacing: 0.5px; position: relative; }
+header.scrolled {
+    box-shadow: var(--shadow-md);
+    background: rgba(5, 5, 16, 0.8) !important;
+}
+
+header a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+header .nav-link {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
 header .nav-link::after {
-    content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px;
-    background-color: var(--accent-glow); transform: scaleX(0); transition: transform 0.3s ease;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-base);
 }
-header .nav-link:hover::after, .active-nav::after { transform: scaleX(1); }
-.active-nav { color: var(--accent-glow) !important; }
+
+header .nav-link:hover,
+header .nav-link.active-nav {
+    color: var(--accent-primary);
+}
+
+header .nav-link:hover::after,
+header .nav-link.active-nav::after {
+    transform: scaleX(1);
+}
+
+/* Mobile Menu Toggle */
+#mobile-menu-toggle {
+    display: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+#mobile-menu-toggle:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--accent-primary);
+}
+
+@media (max-width: 767px) {
+    #mobile-menu-toggle {
+        display: flex;
+    }
+
+    #main-nav {
+        position: fixed;
+        top: 4rem;
+        left: 0;
+        right: 0;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--glass-border);
+        padding: 2rem 1.5rem;
+        flex-direction: column;
+        gap: 1.5rem !important;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all var(--transition-base);
+    }
+
+    #main-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Theme Toggle Button */
 .theme-toggle-button {
-    width: 2rem; height: 2rem; border-radius: 9999px; display: flex;
-    align-items: center; justify-content: center; background-color: var(--glass-bg);
-    border: 1px solid var(--glass-border); transition: all 0.3s ease;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    color: var(--text-secondary);
 }
+
 .theme-toggle-button:hover {
-    box-shadow: 0 0 15px var(--shadow-color); background-color: var(--accent-glow) !important; color: #010409 !important;
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: var(--bg-primary);
+    box-shadow: var(--glow-primary);
+    transform: rotate(180deg);
 }
-.footer-icon { color: var(--text-secondary); transition: all 0.2s ease; }
-.footer-icon:hover { color: var(--accent-glow); transform: scale(1.1) translateY(-2px); }
-footer { border-color: var(--glass-border); }
 
-/* -- 6. Tombol, Tag, & Tab -- */
-.btn { display: inline-block; text-align: center; border-radius: 0.5rem; padding: 0.75rem 2rem; font-weight: bold; transition: all 0.3s ease; }
-.btn-primary { background: var(--accent-glow); color: #010409 !important; box-shadow: 0 0 20px var(--shadow-color); }
-.btn-primary:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 0 30px var(--shadow-hover-color); }
+/* -- 7. Typography Styles -- */
+.hero-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--text-primary);
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    margin: 1rem 0;
+}
+
+.hero-subtitle {
+    font-family: 'Fira Code', monospace;
+    color: var(--accent-primary);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 500;
+    text-shadow: var(--glow-primary);
+}
+
+.hero-description {
+    margin-top: 1.5rem;
+    max-width: 42rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.section-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-family: 'Fira Code', monospace;
+    margin-top: 1rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-email {
+    font-family: 'Fira Code', monospace;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    color: var(--accent-primary);
+    text-shadow: var(--glow-primary);
+    transition: all var(--transition-base);
+    display: inline-block;
+}
+
+.contact-email:hover {
+    letter-spacing: 0.1em;
+    transform: scale(1.05);
+    text-shadow: var(--glow-primary), var(--glow-primary);
+}
+
+.stat-number {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text-primary);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* -- 8. Buttons & Interactive Elements -- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    border-radius: 0.75rem;
+    padding: 0.875rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--bg-primary) !important;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-lg), var(--glow-primary);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
 .btn-secondary {
-    background-color: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary) !important;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(10px);
 }
-.btn-secondary:hover { border-color: var(--accent-glow); color: var(--accent-glow) !important; }
+
+.btn-secondary:hover {
+    border-color: var(--accent-primary);
+    background: var(--glass-bg-hover);
+    color: var(--accent-primary) !important;
+    box-shadow: var(--glow-primary);
+    transform: translateY(-3px);
+}
+
+/* Tech Tags */
 .tech-tag {
-    background: rgba(0, 255, 151, 0.1); color: var(--accent-glow); border-radius: 9999px;
-    padding: 0.25rem 0.75rem; font-size: 0.75rem; font-family: 'Fira Code', monospace;
+    background: rgba(0, 255, 151, 0.08);
+    color: var(--accent-primary);
+    border-radius: 9999px;
+    padding: 0.375rem 1rem;
+    font-size: 0.875rem;
+    font-family: 'Fira Code', monospace;
     border: 1px solid rgba(0, 255, 151, 0.2);
+    transition: all var(--transition-fast);
+    display: inline-block;
 }
-html.light .tech-tag { background: rgba(0, 138, 82, 0.1); border-color: rgba(0, 138, 82, 0.2); }
-.tab-container { background-color: var(--glass-bg); border: 1px solid var(--glass-border); padding: 0.5rem; border-radius: 1rem; }
-.tab-btn { padding: 0.5rem 1.5rem; border-radius: 0.75rem; font-weight: 600; color: var(--text-secondary); transition: all 0.3s ease; }
-.tab-btn.active { background-color: var(--accent-glow); color: #010409; }
 
-/* -- 7. Proyek & Modal -- */
-#projects-grid .glass-card { padding: 0; overflow: hidden; }
-#projects-grid img { transition: transform 0.4s ease; }
-#projects-grid .glass-card:hover img { transform: scale(1.05); }
-.page-hidden { opacity: 0; transform: scale(0.95); pointer-events: none; transition: all 0.3s ease; }
+.tech-tag:hover {
+    background: rgba(0, 255, 151, 0.15);
+    border-color: var(--accent-primary);
+    box-shadow: var(--glow-primary);
+    transform: translateY(-2px);
+}
+
+html.light .tech-tag {
+    background: rgba(5, 150, 105, 0.1);
+    color: var(--accent-primary);
+    border-color: rgba(5, 150, 105, 0.3);
+}
+
+/* -- 9. Tab System -- */
+.tab-container {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    display: inline-flex;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.tab-btn {
+    padding: 0.625rem 1.75rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+.tab-btn:hover {
+    color: var(--accent-primary);
+    background: rgba(0, 255, 151, 0.05);
+}
+
+.tab-btn.active {
+    background: var(--gradient-primary);
+    color: var(--bg-primary);
+    box-shadow: var(--glow-primary);
+}
+
+/* -- 10. Project Cards -- */
+.projects-container {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 2rem;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+.projects-grid {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+    width: max-content;
+}
+
+.project-card {
+    width: 380px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card img {
+    transition: transform var(--transition-slow);
+    will-change: transform;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card:hover img {
+    transform: scale(1.1) rotate(1deg);
+}
+
+/* Custom Scrollbar */
+.projects-container::-webkit-scrollbar {
+    height: 10px;
+}
+
+.projects-container::-webkit-scrollbar-track {
+    background: var(--glass-bg);
+    border-radius: 10px;
+    margin: 0 1rem;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 10px;
+    transition: background var(--transition-fast);
+}
+
+.projects-container::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* -- 11. Modal & Detail Page -- */
+.page-hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    transition: all var(--transition-base);
+}
+
+#project-detail {
+    background: rgba(5, 5, 16, 0.95);
+    backdrop-filter: blur(20px);
+}
+
 .modal-close-button {
-    position: absolute; top: 1rem; right: 1rem; font-size: 2rem;
-    color: var(--text-secondary); transition: all 0.3s ease;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    color: var(--text-secondary);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
-.modal-close-button:hover { color: var(--accent-glow); transform: rotate(90deg); }
 
-/* -- 8. Animasi Canvas & Profil -- */
-#constellation-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-.profile-image { border-radius: 9999px; width: 100%; height: 100%; object-fit: cover; }
-.glowing-image-wrapper {
-    width: 16rem; height: 16rem; border-radius: 9999px; padding: 0.5rem;
-    background: linear-gradient(45deg, var(--accent-glow), var(--accent-blue));
-    box-shadow: 0 0 40px var(--shadow-color);
+.modal-close-button:hover {
+    color: var(--accent-primary);
+    transform: rotate(90deg);
+    border-color: var(--accent-primary);
+    box-shadow: var(--glow-primary);
 }
-@media (min-width: 768px) { .glowing-image-wrapper { width: 20rem; height: 20rem; } }
+
+/* -- 12. Profile Image -- */
+.glowing-image-wrapper {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    padding: 0.5rem;
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-lg), var(--glow-primary);
+    position: relative;
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: var(--shadow-lg), var(--glow-primary);
+    }
+
+    50% {
+        box-shadow: var(--shadow-lg), var(--glow-primary), var(--glow-blue);
+    }
+}
+
+.profile-image {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 3px solid var(--bg-primary);
+}
+
+@media (min-width: 768px) {
+    .glowing-image-wrapper {
+        width: 22rem;
+        height: 22rem;
+    }
+}
+
+/* -- 13. Constellation Canvas -- */
+#constellation-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* -- 14. Footer -- */
+footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 2rem 0;
+}
+
+.footer-icon {
+    color: var(--text-secondary);
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-icon:hover {
+    color: var(--accent-primary);
+    transform: scale(1.15) translateY(-3px);
+    filter: drop-shadow(var(--glow-primary));
+}
+
+/* -- 15. Utility Classes -- */
+.page-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.relative {
+    position: relative;
+}
+
+.z-10 {
+    z-index: 10;
+}
+
+/* -- 16. Animations -- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* -- 17. Scroll Progress Indicator -- */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    z-index: 100;
+    transition: width 0.1s ease-out;
+    box-shadow: var(--glow-primary);
+}
+
+/* -- 18. Responsive Adjustments -- */
+@media (max-width: 768px) {
+    .glass-section {
+        margin: 1rem 0;
+        padding: 3rem 0;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9375rem;
+    }
+
+    .project-card {
+        width: 320px;
+    }
+
+    .glowing-image-wrapper {
+        width: 14rem;
+        height: 14rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1440px;
+    }
+}
+
+/* -- 19. Performance Optimizations -- */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.glass-card,
+.glass-section,
+.btn,
+.project-card {
+    will-change: transform;
+}
+
+/* -- 20. Print Styles -- */
+@media print {
+
+    .aurora-bg,
+    #constellation-canvas,
+    header,
+    footer {
+        display: none !important;
+    }
+}
